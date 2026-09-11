@@ -5,564 +5,2454 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RELACIONAMENTO.EXE — jogo educativo sobre respeito e prevenção da violência</title>
 <meta name="description" content="Jogo educativo em formato de conversa sobre relacionamentos, respeito, autonomia, violências invisíveis e cultura digital.">
+
 <style>
 :root{
-  --bg:#080a0f; --panel:#121620; --panel-2:#1a1f2b; --line:#262d3a;
-  --txt:#f2f4f7; --muted:#98a1b0;
-  --accent:#f2c14e; --accent-2:#5ac8b8; --danger:#e2665f; --info:#6aa9f0;
+  --bg:#080a0f;
+  --panel:#121620;
+  --panel-2:#1a1f2b;
+  --line:#262d3a;
+  --txt:#f2f4f7;
+  --muted:#98a1b0;
+  --accent:#f2c14e;
+  --accent-2:#5ac8b8;
+  --danger:#e2665f;
+  --info:#6aa9f0;
   --radius:18px;
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  background:var(--bg); color:var(--txt);
-  font-family:"Segoe UI",Inter,system-ui,-apple-system,Arial,sans-serif;
-  min-height:100vh; -webkit-font-smoothing:antialiased;
+
+*{
+  box-sizing:border-box;
 }
-body::before{content:"";position:fixed;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 50% -10%, rgba(242,193,78,.10), transparent 55%),
-             radial-gradient(circle at 90% 100%, rgba(90,200,184,.08), transparent 50%);}
-.wrap{position:relative;width:min(880px,100%);margin:0 auto;padding:16px 16px 48px;min-height:100vh;display:flex;flex-direction:column}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 4px}
-.brand{font-weight:900;letter-spacing:-.5px;font-size:15px}
-.brand .exe{color:var(--accent)}
-.linkbtn{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 13px;font-size:12px;cursor:pointer}
-.linkbtn:hover{color:var(--txt);border-color:var(--accent)}
-.card{background:linear-gradient(180deg,rgba(26,31,43,.96),rgba(18,22,32,.96));border:1px solid var(--line);
-  border-radius:var(--radius);padding:26px;margin-top:14px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
-h1{font-size:clamp(30px,8vw,54px);line-height:1;margin:10px 0 14px;letter-spacing:-2px}
-h1 .exe{color:var(--accent)}
-h2{font-size:20px;margin:0 0 10px}
-p{line-height:1.65;color:#d7dce4}
-.lead{font-size:17px;color:#c9d0da}
-.tag{display:inline-block;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);
-  border:1px solid rgba(242,193,78,.35);border-radius:999px;padding:6px 11px}
-.muted{color:var(--muted);font-size:13px;line-height:1.6}
-.btn{border:0;border-radius:12px;padding:14px 22px;font-weight:800;font-size:15px;cursor:pointer;
-  background:var(--accent);color:#12141a;transition:.15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
-.btn.ghost:hover{border-color:var(--accent)}
-.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+html,
+body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:"Segoe UI",Inter,system-ui,-apple-system,Arial,sans-serif;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(242,193,78,.10), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(90,200,184,.08), transparent 50%);
+}
+
+.wrap{
+  position:relative;
+  width:min(880px,100%);
+  margin:0 auto;
+  padding:16px 16px 48px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:8px 4px;
+}
+
+.brand{
+  font-weight:900;
+  letter-spacing:-.5px;
+  font-size:15px;
+}
+
+.brand .exe{
+  color:var(--accent);
+}
+
+.linkbtn{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--muted);
+  border-radius:999px;
+  padding:7px 13px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.linkbtn:hover{
+  color:var(--txt);
+  border-color:var(--accent);
+}
+
+.card{
+  background:linear-gradient(
+    180deg,
+    rgba(26,31,43,.96),
+    rgba(18,22,32,.96)
+  );
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px;
+  margin-top:14px;
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+}
+
+.center{
+  text-align:center;
+}
+
+h1{
+  font-size:clamp(30px,8vw,54px);
+  line-height:1;
+  margin:10px 0 14px;
+  letter-spacing:-2px;
+}
+
+h1 .exe{
+  color:var(--accent);
+}
+
+h2{
+  font-size:20px;
+  margin:0 0 10px;
+}
+
+p{
+  line-height:1.65;
+  color:#d7dce4;
+}
+
+.lead{
+  font-size:17px;
+  color:#c9d0da;
+}
+
+.tag{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid rgba(242,193,78,.35);
+  border-radius:999px;
+  padding:6px 11px;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:14px 22px;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+  background:var(--accent);
+  color:#12141a;
+  transition:.15s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn.ghost{
+  background:transparent;
+  color:var(--txt);
+  border:1px solid var(--line);
+}
+
+.btn.ghost:hover{
+  border-color:var(--accent);
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
 
 /* HUD */
-.hud{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.meter{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
-.meter .lbl{font-size:11px;color:var(--muted);letter-spacing:.6px;display:flex;justify-content:space-between;gap:6px}
-.track{height:6px;border-radius:99px;background:#232a36;margin-top:8px;overflow:hidden}
-.fill{height:100%;width:0;border-radius:99px;transition:width .45s ease}
-.f-resp{background:var(--accent-2)} .f-ctrl{background:var(--danger)} .f-cons{background:var(--info)}
-.progress{height:6px;background:#232a36;border-radius:99px;overflow:hidden;margin:14px 0 4px}
-.progress > i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
-.chaptertag{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+.hud{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+
+.meter{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px 12px;
+}
+
+.meter .lbl{
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.6px;
+  display:flex;
+  justify-content:space-between;
+  gap:6px;
+}
+
+.track{
+  height:6px;
+  border-radius:99px;
+  background:#232a36;
+  margin-top:8px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  width:0;
+  border-radius:99px;
+  transition:width .45s ease;
+}
+
+.f-resp{
+  background:var(--accent-2);
+}
+
+.f-ctrl{
+  background:var(--danger);
+}
+
+.f-cons{
+  background:var(--info);
+}
+
+.progress{
+  height:6px;
+  background:#232a36;
+  border-radius:99px;
+  overflow:hidden;
+  margin:14px 0 4px;
+}
+
+.progress > i{
+  display:block;
+  height:100%;
+  background:var(--accent);
+  width:0;
+  transition:width .4s;
+}
+
+.chaptertag{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
 
 /* CHAT */
-.chat{margin-top:18px;display:flex;flex-direction:column;gap:10px;min-height:180px}
-.msg{max-width:82%;padding:12px 15px;border-radius:16px;line-height:1.5;font-size:15px;
-  animation:pop .25s ease both;white-space:pre-wrap}
-@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.msg .who{display:block;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.them{align-self:flex-start;background:var(--panel-2);border:1px solid var(--line);border-top-left-radius:5px}
-.me{align-self:flex-end;background:rgba(242,193,78,.14);border:1px solid rgba(242,193,78,.35);border-top-right-radius:5px}
-.narr{align-self:center;text-align:center;max-width:100%;background:transparent;border:0;color:var(--muted);font-size:13px;font-style:italic}
-.typing{align-self:flex-start;display:flex;gap:4px;padding:12px 15px;background:var(--panel-2);border:1px solid var(--line);border-radius:16px;border-top-left-radius:5px}
-.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:bl 1s infinite}
-.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
-@keyframes bl{0%,60%,100%{opacity:.25}30%{opacity:1}}
 
-.question{margin:18px 0 12px;font-size:15px;color:var(--muted)}
-.options{display:grid;gap:10px}
-.opt{width:100%;text-align:left;padding:15px 16px;font-size:15px;line-height:1.45;cursor:pointer;
-  background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:14px;transition:.15s}
-.opt:hover{border-color:var(--accent);background:#20263250;transform:translateY(-2px)}
-.opt:disabled{opacity:.45;cursor:default;transform:none}
-.feedback{margin-top:16px;padding:16px 18px;border-left:3px solid var(--accent);background:#0e1117;border-radius:12px;line-height:1.6}
-.feedback b{color:var(--accent)}
-.delta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--muted)}
-.delta span{border:1px solid var(--line);border-radius:99px;padding:4px 9px}
+.chat{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-height:180px;
+}
 
-/* RESULT */
-.result-icon{font-size:52px}
-.result-title{font-size:clamp(24px,6vw,34px);margin:6px 0 12px;letter-spacing:-1px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
-.stat{background:#0e1117;border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--muted);font-size:12px}
-.stat strong{display:block;color:var(--txt);font-size:24px;margin-top:6px}
-ul{line-height:1.7;color:#d7dce4;padding-left:20px}
-.footer{margin-top:22px;text-align:center;color:#5f6875;font-size:11px;line-height:1.7}
-.hidden{display:none}
+.msg{
+  max-width:82%;
+  padding:12px 15px;
+  border-radius:16px;
+  line-height:1.5;
+  font-size:15px;
+  animation:pop .25s ease both;
+  white-space:pre-wrap;
+}
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.msg .who{
+  display:block;
+  font-size:11px;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.them{
+  align-self:flex-start;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-top-left-radius:5px;
+}
+
+.me{
+  align-self:flex-end;
+  background:rgba(242,193,78,.14);
+  border:1px solid rgba(242,193,78,.35);
+  border-top-right-radius:5px;
+}
+
+.narr{
+  align-self:center;
+  text-align:center;
+  max-width:100%;
+  background:transparent;
+  border:0;
+  color:var(--muted);
+  font-size:13px;
+  font-style:italic;
+}
+
+.typing{
+  align-self:flex-start;
+  display:flex;
+  gap:4px;
+  padding:12px 15px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  border-radius:16px;
+  border-top-left-radius:5px;
+}
+
+.typing i{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--muted);
+  animation:bl 1s infinite;
+}
+
+.typing i:nth-child(2){
+  animation-delay:.15s;
+}
+
+.typing i:nth-child(3){
+  animation-delay:.3s;
+}
+
+@keyframes bl{
+  0%,60%,100%{
+    opacity:.25;
+  }
+
+  30%{
+    opacity:1;
+  }
+}
+
+.question{
+  margin:18px 0 12px;
+  font-size:15px;
+  color:var(--muted);
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.opt{
+  width:100%;
+  text-align:left;
+  padding:15px 16px;
+  font-size:15px;
+  line-height:1.45;
+  cursor:pointer;
+  background:var(--panel);
+  color:var(--txt);
+  border:1px solid var(--line);
+  border-radius:14px;
+  transition:.15s;
+}
+
+.opt:hover{
+  border-color:var(--accent);
+  background:#20263250;
+  transform:translateY(-2px);
+}
+
+.opt:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none;
+}
+
+.feedback{
+  margin-top:16px;
+  padding:16px 18px;
+  border-left:3px solid var(--accent);
+  background:#0e1117;
+  border-radius:12px;
+  line-height:1.6;
+}
+
+.feedback b{
+  color:var(--accent);
+}
+
+.delta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.delta span{
+  border:1px solid var(--line);
+  border-radius:99px;
+  padding:4px 9px;
+}
+
+/* RESULTADO */
+
+.result-icon{
+  font-size:52px;
+}
+
+.result-title{
+  font-size:clamp(24px,6vw,34px);
+  margin:6px 0 12px;
+  letter-spacing:-1px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:20px 0;
+}
+
+.stat{
+  background:#0e1117;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.stat strong{
+  display:block;
+  color:var(--txt);
+  font-size:24px;
+  margin-top:6px;
+}
+
+ul{
+  line-height:1.7;
+  color:#d7dce4;
+  padding-left:20px;
+}
+
+.footer{
+  margin-top:22px;
+  text-align:center;
+  color:#5f6875;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.hidden{
+  display:none;
+}
+
 @media(max-width:640px){
-  .card{padding:20px}
-  .msg{max-width:92%;font-size:14.5px}
-  .stats{grid-template-columns:1fr}
-  .hud{grid-template-columns:1fr}
-  .btn{width:100%}
+
+  .card{
+    padding:20px;
+  }
+
+  .msg{
+    max-width:92%;
+    font-size:14.5px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .hud{
+    grid-template-columns:1fr;
+  }
+
+  .btn{
+    width:100%;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <div class="wrap">
+
   <div class="topbar">
-    <div class="brand">RELACIONAMENTO<span class="exe">.EXE</span></div>
-    <div style="display:flex;gap:8px">
-      <button class="linkbtn" id="btnAbout" type="button">Sobre o projeto</button>
-      <button class="linkbtn hidden" id="btnRestartTop" type="button">Recomeçar</button>
+
+    <div class="brand">
+      RELACIONAMENTO<span class="exe">.EXE</span>
     </div>
+
+    <div style="display:flex;gap:8px">
+
+      <button
+        class="linkbtn"
+        id="btnAbout"
+        type="button">
+        Sobre o projeto
+      </button>
+
+      <button
+        class="linkbtn hidden"
+        id="btnRestartTop"
+        type="button">
+        Recomeçar
+      </button>
+
+    </div>
+
   </div>
+
   <main id="root"></main>
+
   <div class="footer">
-    Projeto educativo — Concurso para Jovens Aprendizes do CIEE · Projeto Se Liga Moçada — Programa Bem Querer Mulher.<br>
-    Este jogo é uma experiência de reflexão. Não é teste, diagnóstico ou avaliação psicológica.
+    Projeto educativo — Concurso para Jovens Aprendizes do CIEE ·
+    Projeto Se Liga Moçada — Programa Bem Querer Mulher.<br>
+
+    Este jogo é uma experiência de reflexão.
+    Não é teste, diagnóstico ou avaliação psicológica.
   </div>
+
 </div>
+
 
 <script>
 "use strict";
 
+
 /* =========================================================
-   1) DADOS DO JOGO — histórias, escolhas e pontuações
-   Cada opção tem: r (RESPEITO), c (CONTROLE), s (CONSCIÊNCIA)
+   DADOS DO JOGO
    ========================================================= */
+
 var CHAPTERS = [
-{
-  id:1, title:"PRIMEIRO SINAL", theme:"Privacidade, confiança e controle",
-  steps:[
-    {t:"narr", x:"23h14 — conversa com Lia"},
-    {t:"them", who:"Lia", x:"Você chegou em casa?"},
-    {t:"me", x:"Cheguei sim."},
-    {t:"them", who:"Lia", x:"Me manda uma foto. Quero ver onde você está."},
-    {t:"me", x:"Pra quê?"},
-    {t:"them", who:"Lia", x:"Se você não tem nada escondido, qual o problema?"},
-    {t:"choice", q:"Como você responde?", opts:[
-      {x:"Mando a foto para evitar uma discussão.", r:-1, c:1, s:0,
-       f:"Você evitou a discussão, mas a lógica usada transforma confiança em prova de acesso. Privacidade continua sendo um limite, mesmo dentro de um relacionamento."},
-      {x:"Digo que prefiro manter minha privacidade e explico que não é falta de confiança.", r:2, c:0, s:2,
-       f:"Explicar um limite com calma não é esconder algo. Confiança se constrói com combinados, não com comprovações constantes."},
-      {x:"Peço que ela mande uma foto toda vez que eu mandar.", r:0, c:1, s:0,
-       f:"Responder na mesma lógica pode parecer justo, mas mantém a vigilância como regra do relacionamento — agora para os dois lados."}
-    ]},
-    {t:"them", who:"Lia", x:"Tá. Mas me passa a senha do seu celular, aí a gente resolve isso de vez."},
-    {t:"choice", q:"E agora?", opts:[
-      {x:"Passo a senha. É só um celular.", r:-2, c:2, s:0,
-       f:"Acesso total ao celular não é sinal de amor. Quando a privacidade some, fica mais difícil perceber quando a checagem vira monitoramento."},
-      {x:"Digo que não passo a senha, e proponho conversarmos sobre o que está gerando essa insegurança.", r:2, c:0, s:2,
-       f:"Nomear a insegurança abre conversa. Manter a senha preserva a autonomia de cada pessoa — algo que continua existindo em qualquer relação."},
-      {x:"Digo que passo a senha se ela passar a dela também.", r:0, c:1, s:1,
-       f:"A troca parece equilibrada, mas normaliza a checagem mútua. O combinado passa a ser 'provar', e não 'confiar'."}
-    ]}
-  ]
-},
-{
-  id:2, title:"CIÚME", theme:"Ciúme, autonomia e amizades",
-  steps:[
-    {t:"narr", x:"Sexta-feira, 19h02"},
-    {t:"me", x:"Hoje vou sair com o pessoal do curso."},
-    {t:"them", who:"Lia", x:"Que pessoal? Eu não conheço ninguém aí."},
-    {t:"them", who:"Lia", x:"Se você gosta de mim, fica em casa hoje."},
-    {t:"choice", q:"O que você faz?", opts:[
-      {x:"Cancelo o programa para não gerar briga.", r:-1, c:1, s:0,
-       f:"Abrir mão de amizades para evitar conflito costuma ser o primeiro passo do afastamento. Gostar de alguém não exige abrir mão da própria vida."},
-      {x:"Digo que vou, mas convido Lia a conhecer o grupo em outro dia.", r:2, c:0, s:1,
-       f:"Manter o programa e abrir espaço para aproximação respeita a autonomia dos dois. Amizades não são ameaça."},
-      {x:"Vou e desligo o celular para não ouvir cobrança.", r:0, c:0, s:0,
-       f:"Sumir resolve o incômodo do momento, mas deixa o combinado no ar. Conversar sobre o limite costuma ser mais eficaz que o silêncio."}
-    ]},
-    {t:"them", who:"Lia", x:"Então manda print de onde você está a cada uma hora. Só pra eu ficar tranquila."},
-    {t:"choice", q:"Qual sua resposta?", opts:[
-      {x:"Combino de mandar os prints. É rápido e ela fica calma.", r:-1, c:2, s:0,
-       f:"O alívio é imediato, mas a tranquilidade passa a depender de monitoramento. Ciúme não se resolve com vigilância: costuma pedir mais."},
-      {x:"Digo que aviso quando chegar, mas não vou me reportar de hora em hora.", r:2, c:0, s:2,
-       f:"Avisar por cuidado é diferente de prestar contas por controle. Você propôs um combinado sem transformar o relacionamento em fiscalização."},
-      {x:"Digo que ela está exagerando e encerro a conversa.", r:0, c:0, s:1,
-       f:"Perceber o exagero é importante, mas encerrar sem diálogo deixa o assunto sem solução. Dá para recusar o monitoramento e ainda assim conversar."}
-    ]}
-  ]
-},
-{
-  id:3, title:"A DÚVIDA", theme:"Gaslighting e violência psicológica",
-  steps:[
-    {t:"narr", x:"Domingo — conversa sobre o que foi combinado na semana"},
-    {t:"me", x:"Você disse que ia me buscar às 20h. Eu esperei bastante."},
-    {t:"them", who:"Lia", x:"Eu nunca disse isso. Você inventa coisas."},
-    {t:"them", who:"Lia", x:"Sério, você anda esquecendo tudo. Todo mundo percebe."},
-    {t:"choice", q:"Como você reage?", opts:[
-      {x:"Peço desculpas. Talvez eu tenha entendido errado mesmo.", r:0, c:0, s:0,
-       f:"Quando alguém repete que a nossa memória falha, é comum duvidar de si. Esse padrão de fazer o outro duvidar da própria percepção é chamado de gaslighting."},
-      {x:"Digo com calma: 'eu lembro do que combinamos e isso me incomodou'.", r:2, c:0, s:2,
-       f:"Sustentar a própria percepção sem partir para acusação é uma forma de proteger sua confiança em si. Divergir de memória acontece; insistir que o outro 'inventa' é outra coisa."},
-      {x:"Mostro a mensagem no chat em que o horário foi combinado.", r:1, c:0, s:2,
-       f:"Recorrer ao registro ajuda a organizar o fato. O ponto central não é vencer a discussão, e sim perceber quando o desmentido vira rotina."}
-    ]},
-    {t:"them", who:"Lia", x:"Você tá dramático. Ninguém aguenta conversar com você assim."},
-    {t:"choice", q:"E agora?", opts:[
-      {x:"Fico calado. Não vale a pena.", r:0, c:0, s:0,
-       f:"O silêncio evita o atrito de hoje, mas o incômodo continua. Quando se repete, esse tipo de fala vai reduzindo o espaço de dizer o que se sente."},
-      {x:"Digo que a conversa pode continuar depois, sem desqualificação.", r:2, c:0, s:2,
-       f:"Pedir uma conversa sem desqualificação é um limite claro. Violência psicológica é reconhecida na Lei Maria da Penha como uma das formas de violência."},
-      {x:"Respondo dizendo que quem tem problema é ela.", r:-1, c:1, s:0,
-       f:"Devolver a desqualificação mantém a briga no mesmo lugar. Dá para discordar sem atacar a pessoa."}
-    ]}
-  ]
-},
-{
-  id:4, title:"NO TRABALHO", theme:"Mansplaining e manterrupting",
-  steps:[
-    {t:"narr", x:"Reunião de equipe — apresentação de uma proposta"},
-    {t:"them", who:"Bea", x:"Sobre o atendimento: eu levantei os dados e a fila cai se a gente mudar a triagem…"},
-    {t:"them", who:"Téo", x:"Deixa que eu explico. Basicamente, é assim que funciona uma triagem, Bea."},
-    {t:"them", who:"Bea", x:"Eu sei como funciona. Foi justamente por isso que eu trouxe os dados."},
-    {t:"them", who:"Téo", x:"Calma, eu só tô simplificando pra todo mundo entender."},
-    {t:"choice", q:"Você está na reunião. O que faz?", opts:[
-      {x:"Fico quieto. Não é comigo.", r:0, c:0, s:0,
-       f:"O silêncio é confortável para quem assiste. Interromper e explicar algo que a pessoa domina tem nome: manterrupting e mansplaining."},
-      {x:"Digo: 'Téo, a Bea não terminou. Bea, pode seguir?'", r:2, c:0, s:2,
-       f:"Devolver a palavra é uma intervenção simples e eficaz. Ela recoloca a fala com quem estava apresentando, sem transformar a reunião em conflito pessoal."},
-      {x:"Falo depois, em particular, que ela deveria se impor mais.", r:0, c:1, s:0,
-       f:"A responsabilidade de garantir a fala não é só de quem foi interrompida. Mudar a dinâmica exige que o grupo também aja."}
-    ]},
-    {t:"them", who:"Téo", x:"Depois eu reviso os números dela, só pra garantir."},
-    {t:"choice", q:"Qual sua resposta?", opts:[
-      {x:"Concordo: revisão nunca é demais.", r:-1, c:1, s:0,
-       f:"Revisar o trabalho de todo mundo é normal; revisar só o dela sugere que a competência dela precisa de comprovação extra."},
-      {x:"Sugiro que a revisão siga o mesmo critério para todas as propostas.", r:2, c:0, s:2,
-       f:"Aplicar o mesmo critério a todo mundo é uma forma prática de tratar as pessoas de forma igual dentro do time."},
-      {x:"Peço que a Bea apresente os números na próxima reunião com a liderança.", r:1, c:0, s:1,
-       f:"Dar visibilidade a quem fez o trabalho ajuda, desde que o crédito e o espaço de fala sejam mantidos."}
-    ]}
-  ]
-},
-{
-  id:5, title:"GRUPO", theme:"Cultura digital, machosfera e discurso de ódio",
-  steps:[
-    {t:"narr", x:"Grupo de mensagens — 42 participantes"},
-    {t:"them", who:"Rafa", x:"Galera, olha esse vídeo. O cara ensina como 'manter a namorada na linha'. 😂"},
-    {t:"them", who:"Rafa", x:"Mandei o print da conversa dela também, é hilário."},
-    {t:"choice", q:"Você recebe o conteúdo. O que faz?", opts:[
-      {x:"Rio e mando um emoji. É só brincadeira de grupo.", r:-2, c:1, s:0,
-       f:"O riso coletivo funciona como aprovação e faz o conteúdo circular. Piada que ridiculariza mulheres sustenta discursos que legitimam controle."},
-      {x:"Digo no grupo que não acho graça e peço que o print seja apagado.", r:2, c:0, s:2,
-       f:"Posicionar-se no mesmo espaço em que a fala aconteceu muda a temperatura do grupo. Compartilhar conversa privada de alguém também expõe a pessoa sem consentimento."},
-      {x:"Saio da conversa sem falar nada.", r:0, c:0, s:1,
-       f:"Sair protege você do conteúdo, mas o grupo segue igual. Quando é seguro, dizer algo tem mais efeito do que apenas se afastar."}
-    ]},
-    {t:"them", who:"Rafa", x:"Ih, começou o mimimi. É só humor, ninguém aqui bate em ninguém."},
-    {t:"choice", q:"Como você responde?", opts:[
-      {x:"Deixo quieto pra não brigar com todo mundo.", r:0, c:0, s:0,
-       f:"Evitar o desgaste é compreensível. Ainda assim, o silêncio geral costuma ser lido pelo grupo como concordância."},
-      {x:"Explico que humor que trata mulher como propriedade normaliza controle, mesmo sem agressão física.", r:2, c:0, s:2,
-       f:"Violência tem várias formas além da física — psicológica, moral e patrimonial estão previstas na Lei Maria da Penha. Nomear isso é o que torna a conversa educativa."},
-      {x:"Chamo o Rafa no privado e digo que ele passou do ponto.", r:1, c:0, s:1,
-       f:"A conversa privada pode funcionar com quem é próximo, mas quem viu a piada no grupo não viu a resposta."}
-    ]}
-  ]
-},
-{
-  id:6, title:"O LIMITE", theme:"Autonomia, término e coerção",
-  steps:[
-    {t:"narr", x:"Terça-feira, 21h40"},
-    {t:"them", who:"Lia", x:"Eu pensei bastante. Eu quero terminar."},
-    {t:"them", who:"Lia", x:"Não é sobre culpa. Eu só não quero mais seguir assim."},
-    {t:"choice", q:"Qual é a sua reação?", opts:[
-      {x:"Digo que respeito a decisão dela, mesmo doendo.", r:2, c:0, s:2,
-       f:"Terminar é uma decisão que não precisa de autorização do outro. Aceitar não significa não sentir: significa não transformar a dor em pressão."},
-      {x:"Peço uma conversa presencial para entender, aceitando um 'não' como resposta.", r:2, c:0, s:1,
-       f:"Pedir uma conversa é legítimo quando o 'não' é respeitado. O que muda tudo é insistir depois da recusa."},
-      {x:"Insisto: mando mensagens até ela mudar de ideia.", r:-2, c:2, s:0,
-       f:"Insistência repetida depois de um 'não' é pressão, não amor. Ela desloca a decisão da pessoa para quem insiste."},
-      {x:"Digo que, se ela terminar, vou expor as conversas dela.", r:-2, c:2, s:0,
-       f:"Isso é uma ameaça, e é um comportamento grave. Ameaçar expor imagens ou conversas é crime e configura violência — não é discussão de casal. Se algo assim acontecer, procure ajuda: Ligue 180 (Central de Atendimento à Mulher) ou 190 em caso de emergência."}
-    ]},
-    {t:"narr", x:"Dois dias depois"},
-    {t:"them", who:"Lia", x:"Preciso pegar minhas coisas. Prefiro ir com uma amiga junto."},
-    {t:"choice", q:"E então?", opts:[
-      {x:"Combino o horário e devolvo tudo tranquilamente.", r:2, c:0, s:2,
-       f:"Facilitar o fim reduz o risco e respeita a escolha dela de se sentir segura. O término também se faz de pequenos gestos."},
-      {x:"Digo que ela só pega se for sozinha, para conversarmos.", r:-2, c:2, s:0,
-       f:"Condicionar a devolução a uma conversa é uma forma de coerção: transforma um direito dela em moeda de troca."},
-      {x:"Digo que vou junto ao encontro, mesmo ela não querendo.", r:-1, c:1, s:0,
-       f:"Ignorar o pedido de não estar presente desconsidera o limite que ela colocou. Respeitar o pedido é o que constrói segurança."}
-    ]}
-  ]
-}
+
+  /* =======================================================
+     CAPÍTULO 1
+     ======================================================= */
+
+  {
+    id:1,
+    title:"PRIMEIRO SINAL",
+    theme:"Privacidade, confiança e controle",
+
+    steps:[
+
+      {t:"narr", x:"23h14 — conversa com Lia"},
+
+      {t:"them", who:"Lia", x:"Você chegou em casa?"},
+
+      {t:"me", x:"Cheguei sim."},
+
+      {t:"them", who:"Lia", x:"Me manda uma foto. Quero ver onde você tá."},
+
+      {t:"me", x:"Pra quê?"},
+
+      {t:"them", who:"Lia", x:"Ué, se você não tem nada pra esconder, qual é o problema?"},
+
+      {
+        t:"choice",
+        q:"Como você responde?",
+        opts:[
+
+          {
+            x:"Tá bom, vou mandar. Não quero discutir por causa disso.",
+            r:-1,
+            c:1,
+            s:0,
+            f:"Você evitou a discussão, mas a lógica usada transforma confiança em prova de acesso. Privacidade continua sendo um limite, mesmo dentro de um relacionamento."
+          },
+
+          {
+            x:"Prefiro não mandar. Não significa que eu esteja escondendo alguma coisa.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Explicar um limite com calma não é esconder algo. Confiança se constrói com combinados, não com comprovações constantes."
+          },
+
+          {
+            x:"Se eu mandar, você também manda uma foto?",
+            r:0,
+            c:1,
+            s:0,
+            f:"A troca pode parecer justa, mas mantém a vigilância como regra do relacionamento — agora para os dois lados."
+          }
+
+        ]
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Tá bom... então, pra eu ficar mais tranquila e ter certeza de que você não tá escondendo nada, me passa a senha do seu celular."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Aí eu fico tranquila de verdade."
+      },
+
+      {
+        t:"choice",
+        q:"E agora?",
+        opts:[
+
+          {
+            x:"Tá bom, eu passo. A senha é: 123456.",
+            r:-2,
+            c:2,
+            s:0,
+            f:"Dar acesso total ao celular não é sinal de amor. Quando a privacidade some, fica mais difícil perceber quando a checagem vira monitoramento."
+          },
+
+          {
+            x:"Não quero passar minha senha. Se alguma coisa tá te deixando insegura, a gente pode conversar.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Nomear a insegurança abre espaço para conversa. Manter a senha preserva a autonomia de cada pessoa — algo que continua existindo em qualquer relação."
+          },
+
+          {
+            x:"Eu só passaria se você também passasse a sua.",
+            r:0,
+            c:1,
+            s:1,
+            f:"A troca parece equilibrada, mas normaliza a checagem mútua. O combinado passa a ser 'provar', e não 'confiar'."
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+
+  /* =======================================================
+     CAPÍTULO 2
+     ======================================================= */
+
+  {
+    id:2,
+    title:"CIÚME",
+    theme:"Ciúme, autonomia e amizades",
+
+    steps:[
+
+      {t:"narr", x:"Sexta-feira, 19h02"},
+
+      {t:"me", x:"Hoje vou sair com o pessoal do curso."},
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Então me manda sua localização de hora em hora."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Só pra eu ficar tranquila."
+      },
+
+      {
+        t:"choice",
+        q:"O que você responde?",
+        opts:[
+
+          {
+            x:"Tá bom. Eu mando os prints, é rapidinho.",
+            r:-1,
+            c:2,
+            s:0,
+            f:"O alívio é imediato, mas a tranquilidade passa a depender de monitoramento. Ciúme não se resolve com vigilância: costuma pedir mais."
+          },
+
+          {
+            x:"Eu aviso quando chegar, mas não vou ficar mandando minha localização de hora em hora.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Avisar por cuidado é diferente de prestar contas por controle. Você propôs um combinado sem transformar o relacionamento em fiscalização."
+          },
+
+          {
+            x:"Acho que você tá passando dos limites com isso.",
+            r:0,
+            c:0,
+            s:1,
+            f:"Perceber o exagero é importante, mas encerrar sem diálogo deixa o assunto sem solução. Dá para recusar o monitoramento e ainda assim conversar."
+          }
+
+        ]
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Você vai mesmo sair com esse pessoal? Eu nem conheço ninguém daí."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Se você gosta de mim, fica em casa hoje."
+      },
+
+      {
+        t:"choice",
+        q:"Qual sua resposta?",
+        opts:[
+
+          {
+            x:"Tá bom, eu cancelo. Não quero que a gente brigue por causa disso.",
+            r:-1,
+            c:1,
+            s:0,
+            f:"Abrir mão de amizades para evitar conflito costuma ser o primeiro passo do afastamento. Gostar de alguém não exige abrir mão da própria vida."
+          },
+
+          {
+            x:"Eu vou sair. Se você quiser, outro dia pode conhecer o pessoal.",
+            r:2,
+            c:0,
+            s:1,
+            f:"Manter o programa e abrir espaço para aproximação respeita a autonomia dos dois. Amizades não são ameaça."
+          },
+
+          {
+            x:"Eu vou. Só não quero ficar recebendo cobrança enquanto estiver lá.",
+            r:0,
+            c:0,
+            s:0,
+            f:"Estabelecer distância da cobrança pode evitar o conflito naquele momento, mas o problema continua sem ser discutido. Conversar sobre o limite costuma ser mais eficaz."
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+
+  /* =======================================================
+     CAPÍTULO 3
+     ======================================================= */
+
+  {
+    id:3,
+    title:"A DÚVIDA",
+    theme:"Gaslighting e violência psicológica",
+
+    steps:[
+
+      {
+        t:"narr",
+        x:"Domingo — conversa sobre o que foi combinado na semana"
+      },
+
+      {
+        t:"me",
+        x:"A gente combinou às 20h e você nem foi."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Eu não lembro de ter marcado com você nesse dia."
+      },
+
+      {
+        t:"me",
+        x:"Mas a gente combinou sim. Eu fiquei esperando você."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Você tem certeza? Eu não lembro de ter falado isso."
+      },
+
+      {
+        t:"me",
+        x:"Tenho. A gente conversou sobre isso durante a semana."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Você tá confundindo as coisas. Talvez a gente tenha falado outro dia."
+      },
+
+      {
+        t:"me",
+        x:"Não, foi nesse dia. Eu lembro certinho."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Você anda confundindo muita coisa ultimamente. Às vezes você tem tanta certeza de uma coisa que nem sequer aconteceu."
+      },
+
+      {
+        t:"choice",
+        q:"Como você reage?",
+        opts:[
+
+          {
+            x:"Desculpa. Talvez eu tenha visto tudo errado mesmo.",
+            r:0,
+            c:0,
+            s:0,
+            f:"Quando alguém repete que a nossa memória falha, é comum começar a duvidar de si. Esse padrão de fazer o outro duvidar da própria percepção é chamado de gaslighting."
+          },
+
+          {
+            x:"Eu lembro do que a gente combinou. Isso me incomodou.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Sustentar a própria percepção sem partir para acusação é uma forma de proteger sua confiança em si. Divergir de memória acontece; insistir que o outro 'inventa' é outra coisa."
+          },
+
+          {
+            x:"Eu tenho a mensagem aqui. Foi isso que a gente combinou.",
+            r:1,
+            c:0,
+            s:2,
+            f:"Recorrer ao registro ajuda a organizar o fato. O ponto central não é vencer a discussão, e sim perceber quando o desmentido vira rotina."
+          }
+
+        ]
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Você tá sendo dramático."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Ninguém aguenta conversar com você desse jeito."
+      },
+
+      {
+        t:"choice",
+        q:"E agora?",
+        opts:[
+
+          {
+            x:"Tá bom. Melhor deixar isso pra lá.",
+            r:0,
+            c:0,
+            s:0,
+            f:"O silêncio evita o atrito de hoje, mas o incômodo continua. Quando se repete, esse tipo de fala vai reduzindo o espaço de dizer o que se sente."
+          },
+
+          {
+            x:"A gente pode conversar, mas sem ficar desqualificando um ao outro.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Pedir uma conversa sem desqualificação é um limite claro. Violência psicológica é reconhecida na Lei Maria da Penha como uma das formas de violência."
+          },
+
+          {
+            x:"O problema é você. Você que não sabe conversar.",
+            r:-1,
+            c:1,
+            s:0,
+            f:"Devolver a desqualificação mantém a briga no mesmo lugar. Dá para discordar sem atacar a pessoa."
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+
+  /* =======================================================
+     CAPÍTULO 4
+     ======================================================= */
+
+  {
+    id:4,
+    title:"NO TRABALHO",
+    theme:"Mansplaining e manterrupting",
+
+    steps:[
+
+      {
+        t:"narr",
+        x:"Reunião de equipe — apresentação de uma proposta"
+      },
+
+      {
+        t:"them",
+        who:"Bea",
+        x:"Sobre o atendimento: eu levantei os dados e a fila cai se a gente mudar a triagem..."
+      },
+
+      {
+        t:"them",
+        who:"Téo",
+        x:"Deixa que eu explico."
+      },
+
+      {
+        t:"them",
+        who:"Téo",
+        x:"Basicamente, triagem funciona assim, Bea."
+      },
+
+      {
+        t:"them",
+        who:"Bea",
+        x:"Eu sei como funciona. Foi justamente por isso que eu trouxe os dados."
+      },
+
+      {
+        t:"them",
+        who:"Téo",
+        x:"Calma, eu só tô tentando facilitar pra todo mundo."
+      },
+
+      {
+        t:"choice",
+        q:"Você está na reunião. O que faz?",
+        opts:[
+
+          {
+            x:"Não falo nada. Não quero me envolver.",
+            r:0,
+            c:0,
+            s:0,
+            silent:true,
+            f:"O silêncio é confortável para quem assiste. Interromper e explicar algo que a pessoa domina tem nome: manterrupting e mansplaining."
+          },
+
+          {
+            x:"Téo, ela não terminou. Bea, pode continuar.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Devolver a palavra é uma intervenção simples e eficaz. Ela recoloca a fala com quem estava apresentando, sem transformar a reunião em conflito pessoal."
+          },
+
+          {
+            x:"Depois eu converso com você, Bea. Acho que você precisa se impor mais.",
+            r:0,
+            c:1,
+            s:0,
+            f:"A responsabilidade de garantir a fala não é só de quem foi interrompida. Mudar a dinâmica exige que o grupo também aja."
+          }
+
+        ]
+      },
+
+      {
+        t:"them",
+        who:"Téo",
+        x:"Depois eu dou uma olhada nesses números, Bea. Só pra conferir se tá tudo certo."
+      },
+
+      {
+        t:"choice",
+        q:"Qual sua resposta?",
+        opts:[
+
+          {
+            x:"Pode revisar. Revisão nunca é demais.",
+            r:-1,
+            c:1,
+            s:0,
+            f:"Revisar o trabalho de todo mundo é normal; revisar só o dela sugere que a competência dela precisa de comprovação extra."
+          },
+
+          {
+            x:"Acho melhor usar o mesmo critério pra todo mundo.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Aplicar o mesmo critério a todo mundo é uma forma prática de tratar as pessoas de forma igual dentro do time."
+          },
+
+          {
+            x:"Acho que a Bea deveria apresentar os números pra liderança na próxima reunião.",
+            r:1,
+            c:0,
+            s:1,
+            f:"Dar visibilidade a quem fez o trabalho ajuda, desde que o crédito e o espaço de fala sejam mantidos."
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+
+  /* =======================================================
+     CAPÍTULO 5
+     ======================================================= */
+
+  {
+    id:5,
+    title:"GRUPO",
+    theme:"Cultura digital, machosfera e discurso de ódio",
+
+    steps:[
+
+      {
+        t:"narr",
+        x:"Grupo de mensagens — 42 participantes"
+      },
+
+      {
+        t:"them",
+        who:"Rafa",
+        x:"Mano, olha o que esse cara tá falando nesse vídeo kkkkk."
+      },
+
+      {
+        t:"them",
+        who:"Rafa",
+        x:"Mandei essse vídeo pra minha namorada pra mostrar pra ela como funciona comigo kkkkkk. 😂"
+      },
+
+      {
+        t:"them",
+        who:"Rafa",
+        x:"Olha o que ela respondeu para mim kkkkk."
+      },
+
+      {
+        t:"choice",
+        q:"Você vê a mensagem no grupo. O que faz?",
+        opts:[
+
+          {
+            x:"Kkkkk, que viagem. 😂",
+            r:-2,
+            c:1,
+            s:0,
+            f:"Rir e deixar passar pode parecer inofensivo, mas também ajuda a tratar como normal uma ideia de controle dentro do relacionamento."
+          },
+
+          {
+            x:"Apaga isso, Rafa. Você tá expondo uma conversa privada dela.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Interromper a exposição protege a privacidade de quem não autorizou o compartilhamento. O fato de ser um grupo não transforma uma conversa privada em conteúdo público."
+          },
+
+          {
+            x:"Não quero participar desse tipo de conversa. Vou sair do grupo.",
+            r:0,
+            c:0,
+            s:1,
+            f:"Sair do grupo é uma forma de se afastar daquele conteúdo, mas não interfere no que está acontecendo entre as outras pessoas."
+          }
+
+        ]
+      },
+
+      {
+        t:"them",
+        who:"Rafa",
+        x:"Ih, começou o mimimi."
+      },
+
+      {
+        t:"them",
+        who:"Rafa",
+        x:"É só humor, ninguém aqui bate em ninguém."
+      },
+
+      {
+        t:"choice",
+        q:"Como você responde?",
+        opts:[
+
+          {
+            x:"Deixa pra lá. Não quero arrumar briga com todo mundo.",
+            r:0,
+            c:0,
+            s:0,
+            f:"Evitar o desgaste é compreensível. Ainda assim, o silêncio geral costuma ser lido pelo grupo como concordância."
+          },
+
+          {
+            x:"Mesmo sendo 'humor', isso normaliza a ideia de controlar uma mulher. Não acho certo.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Violência tem várias formas além da física — psicológica, moral e patrimonial estão previstas na Lei Maria da Penha. Nomear isso é o que torna a conversa educativa."
+          },
+
+          {
+            x:"Rafa, acho que você passou do ponto. Melhor parar por aqui.",
+            r:1,
+            c:0,
+            s:1,
+            f:"Colocar um limite é importante, especialmente quando o conteúdo está sendo compartilhado com outras pessoas. A resposta também ajuda a mostrar ao grupo que aquilo não deve ser tratado como normal."
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+
+  /* =======================================================
+     CAPÍTULO 6
+     ======================================================= */
+
+  {
+    id:6,
+    title:"O LIMITE",
+    theme:"Autonomia, término e coerção",
+
+    steps:[
+
+      {
+        t:"narr",
+        x:"Terça-feira, 21h40"
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Eu pensei bastante... quero terminar."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Não é sobre culpa. Eu só não quero mais continuar assim."
+      },
+
+      {
+        t:"choice",
+        q:"Qual é a sua reação?",
+        opts:[
+
+          {
+            x:"Eu respeito sua decisão. Vai doer, mas eu entendo.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Terminar é uma decisão que não precisa de autorização do outro. Aceitar não significa não sentir: significa não transformar a dor em pressão."
+          },
+
+          {
+            x:"Eu queria conversar pessoalmente antes. Se você não quiser, eu vou respeitar.",
+            r:2,
+            c:0,
+            s:1,
+            f:"Pedir uma conversa é legítimo quando o 'não' é respeitado. O que muda tudo é insistir depois da recusa."
+          },
+
+          {
+            x:"Eu não quero que você termine. Vou continuar falando com você até a gente resolver.",
+            r:-2,
+            c:2,
+            s:0,
+            f:"Insistência repetida depois de um 'não' é pressão, não amor. Ela desloca a decisão da pessoa para quem insiste."
+          },
+
+          {
+            x:"Se você terminar comigo, eu vou mostrar nossas conversas pra todo mundo.",
+            r:-2,
+            c:2,
+            s:0,
+            f:"Isso é uma ameaça, e é um comportamento grave. Ameaçar expor imagens ou conversas é crime e configura violência — não é discussão de casal. Se algo assim acontecer, procure ajuda: Ligue 180 (Central de Atendimento à Mulher) ou 190 em caso de emergência."
+          }
+
+        ]
+      },
+
+      {
+        t:"narr",
+        x:"Dois dias depois"
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Preciso pegar minhas coisas."
+      },
+
+      {
+        t:"them",
+        who:"Lia",
+        x:"Prefiro ir com uma amiga, tudo bem?"
+      },
+
+      {
+        t:"choice",
+        q:"E então?",
+        opts:[
+
+          {
+            x:"Claro. Me fala um horário que seja bom pra vocês.",
+            r:2,
+            c:0,
+            s:2,
+            f:"Facilitar o fim reduz o risco e respeita a escolha dela de se sentir segura. O término também se faz de pequenos gestos."
+          },
+
+          {
+            x:"Eu prefiro que você venha sozinha. A gente precisa conversar.",
+            r:-2,
+            c:2,
+            s:0,
+            f:"Condicionar a devolução a uma conversa é uma forma de coerção: transforma um direito dela em moeda de troca."
+          },
+
+          {
+            x:"Eu vou estar lá também. Quero conversar, mesmo que você não queira.",
+            r:-1,
+            c:1,
+            s:0,
+            f:"Ignorar o pedido de não estar presente desconsidera o limite que ela colocou. Respeitar o pedido é o que constrói segurança."
+          }
+
+        ]
+      }
+
+    ]
+  }
+
 ];
 
-/* Resultados — 6 desfechos, nenhum é diagnóstico */
-var RESULTS = [
- {key:"controle", icon:"🔴", title:"CONTROLE EM EXCESSO", color:"var(--danger)",
-  text:"Ao longo da história, as escolhas apresentaram maior tolerância a vigilância, imposição e coerção — pedir acesso, condicionar decisões e pressionar diante de um 'não'.\n\nIsso não define quem você é: descreve o caminho escolhido dentro desta narrativa. Vale reler cada consequência: em várias cenas existia uma alternativa que resolvia o mesmo incômodo sem restringir a outra pessoa. Reconhecer isso é o começo da mudança."},
- {key:"cuidado", icon:"🟡", title:"CUIDADO QUE VIROU CONTROLE", color:"var(--accent)",
-  text:"Boa parte das escolhas partiu de preocupação, carinho ou vontade de evitar brigas — e mesmo assim acabou restringindo a autonomia da outra pessoa.\n\nCuidado, ciúme e preocupação ultrapassam o limite quando passam a determinar horários, amizades ou acesso ao celular. A diferença entre cuidar e controlar está em quem decide."},
- {key:"ignorados", icon:"🟠", title:"SINAIS IGNORADOS", color:"var(--danger)",
-  text:"Em várias cenas, comportamentos problemáticos passaram sem reação: uma piada, um desmentido, uma interrupção, uma cobrança.\n\nIsolados, esses episódios parecem pequenos. Repetidos ou somados, eles constroem um clima em que controle vira rotina. Perceber os sinais cedo é o que permite conversar antes que a situação se agrave."},
- {key:"alerta", icon:"🟡", title:"ZONA DE ALERTA", color:"var(--accent)",
-  text:"Algumas escolhas preservaram o respeito e os limites; outras merecem reflexão.\n\nEsse resultado é comum: situações ambíguas são justamente as mais difíceis. Vale revisitar as cenas em que você hesitou e pensar no que mudaria — não existe resposta automática, existe atenção."},
- {key:"consciente", icon:"🔵", title:"OLHAR CONSCIENTE", color:"var(--info)",
-  text:"As escolhas mostraram boa capacidade de reconhecer sinais problemáticos, inclusive nas cenas ambíguas: gaslighting, interrupções e piadas que circulam como se fossem inofensivas.\n\nEsse olhar é útil também fora do jogo — para perceber situações vividas por pessoas próximas e para ajudar sem julgar."},
- {key:"respeito", icon:"🟢", title:"RESPEITO EM PRIMEIRO LUGAR", color:"var(--accent-2)",
-  text:"As escolhas demonstraram forte preocupação com autonomia, limites e respeito, sustentando combinados sem recorrer a vigilância ou pressão.\n\nUm relacionamento saudável não é aquele sem conflitos: é aquele em que os conflitos são resolvidos sem controle nem coerção. Foi isso que apareceu na sua trajetória aqui."}
-];
 
 /* =========================================================
-   2) ESTADO E LÓGICA
+   RESULTADOS
    ========================================================= */
-var state = {chapter:0, step:0, R:0, C:0, S:0, choices:0};
+
+var RESULTS = [
+
+  {
+    key:"controle",
+    icon:"🔴",
+    color:"#e2665f",
+    title:"SINAL DE ALERTA",
+    text:"Algumas das suas escolhas colocaram o controle e a pressão acima da autonomia. Isso não define quem você é. O objetivo desta experiência é justamente perceber como pequenas atitudes podem normalizar comportamentos de controle."
+  },
+
+  {
+    key:"cuidado",
+    icon:"🟠",
+    color:"#f2c14e",
+    title:"ATENÇÃO AOS LIMITES",
+    text:"Você tomou algumas decisões que podem parecer pequenas, mas que abrem espaço para controle ou pressão. Vale observar como ciúme, cobrança e insistência podem afetar a autonomia dentro de uma relação."
+  },
+
+  {
+    key:"ignorados",
+    icon:"🟡",
+    color:"#f2c14e",
+    title:"ALGUNS SINAIS PASSARAM BATIDOS",
+    text:"Em algumas situações, você preferiu evitar o conflito ou deixou certos comportamentos passarem. Às vezes isso parece mais simples no momento, mas reconhecer os sinais é importante para construir relações mais saudáveis."
+  },
+
+  {
+    key:"respeito",
+    icon:"🟢",
+    color:"#5ac8b8",
+    title:"RESPEITO E AUTONOMIA",
+    text:"Suas escolhas demonstraram atenção aos limites, à autonomia e ao respeito entre as pessoas. Isso não significa que exista uma resposta perfeita para todas as situações, mas mostra uma tendência de enfrentar conflitos sem transformar cuidado em controle."
+  },
+
+  {
+    key:"consciente",
+    icon:"🔵",
+    color:"#6aa9f0",
+    title:"ESCOLHAS CONSCIENTES",
+    text:"Você demonstrou consciência sobre diferentes formas de violência, controle e desrespeito. Suas escolhas indicam disposição para reconhecer problemas e estabelecer limites de maneira responsável."
+  },
+
+  {
+    key:"alerta",
+    icon:"🟣",
+    color:"#6aa9f0",
+    title:"REFLEXÃO EM ANDAMENTO",
+    text:"Suas escolhas ficaram em uma zona intermediária. Algumas decisões mostraram respeito e consciência, enquanto outras deixaram espaço para reflexão. O mais importante é perceber que relacionamentos saudáveis são construídos com diálogo, autonomia e limites."
+  }
+
+];
+
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+var state = {
+  chapter:0,
+  step:0,
+  R:0,
+  C:0,
+  S:0,
+  choices:0
+};
+
 var MAXES = computeMaxes();
 
-function computeMaxes(){
-  var maxR=0,minR=0,maxC=0,maxS=0,total=0;
-  CHAPTERS.forEach(function(ch){
-    ch.steps.forEach(function(st){
-      if(st.t!=="choice") return;
-      total++;
-      var rs=st.opts.map(function(o){return o.r;});
-      maxR+=Math.max.apply(null,rs); minR+=Math.min.apply(null,rs);
-      maxC+=Math.max.apply(null,st.opts.map(function(o){return o.c;}));
-      maxS+=Math.max.apply(null,st.opts.map(function(o){return o.s;}));
-    });
-  });
-  return {maxR:maxR,minR:minR,maxC:maxC,maxS:maxS,total:total};
-}
-
-function pct(v,min,max){ if(max===min) return 0; return Math.max(0,Math.min(1,(v-min)/(max-min))); }
-
-function computeResult(){
-  var r = pct(state.R, MAXES.minR, MAXES.maxR);
-  var c = pct(state.C, 0, MAXES.maxC);
-  var s = pct(state.S, 0, MAXES.maxS);
-  if(c >= 0.55) return findRes("controle");
-  if(c >= 0.30) return findRes("cuidado");
-  if(r < 0.55)  return findRes("ignorados");
-  if(r >= 0.90 && s >= 0.80) return findRes("respeito");
-  if(s >= 0.70) return findRes("consciente");
-  return findRes("alerta");
-}
-function findRes(k){ for(var i=0;i<RESULTS.length;i++){ if(RESULTS[i].key===k) return RESULTS[i]; } return RESULTS[3]; }
 
 /* =========================================================
-   3) RENDERIZAÇÃO
+   CÁLCULO DOS LIMITES
    ========================================================= */
+
+function computeMaxes(){
+
+  var maxR = 0;
+  var minR = 0;
+  var maxC = 0;
+  var maxS = 0;
+  var total = 0;
+
+  CHAPTERS.forEach(function(chapter){
+
+    chapter.steps.forEach(function(step){
+
+      if(step.t !== "choice"){
+        return;
+      }
+
+      total++;
+
+      var rs = step.opts.map(function(option){
+        return option.r;
+      });
+
+      maxR += Math.max.apply(null, rs);
+      minR += Math.min.apply(null, rs);
+
+      maxC += Math.max.apply(
+        null,
+        step.opts.map(function(option){
+          return option.c;
+        })
+      );
+
+      maxS += Math.max.apply(
+        null,
+        step.opts.map(function(option){
+          return option.s;
+        })
+      );
+
+    });
+
+  });
+
+  return {
+    maxR:maxR,
+    minR:minR,
+    maxC:maxC,
+    maxS:maxS,
+    total:total
+  };
+}
+
+
+/* =========================================================
+   PORCENTAGEM
+   ========================================================= */
+
+function pct(value, min, max){
+
+  if(max === min){
+    return 0;
+  }
+
+  return Math.max(
+    0,
+    Math.min(
+      1,
+      (value - min) / (max - min)
+    )
+  );
+}
+
+
+/* =========================================================
+   RESULTADO
+   ========================================================= */
+
+function computeResult(){
+
+  var r = pct(
+    state.R,
+    MAXES.minR,
+    MAXES.maxR
+  );
+
+  var c = pct(
+    state.C,
+    0,
+    MAXES.maxC
+  );
+
+  var s = pct(
+    state.S,
+    0,
+    MAXES.maxS
+  );
+
+  if(c >= 0.55){
+    return findRes("controle");
+  }
+
+  if(c >= 0.30){
+    return findRes("cuidado");
+  }
+
+  if(r < 0.55){
+    return findRes("ignorados");
+  }
+
+  if(r >= 0.90 && s >= 0.80){
+    return findRes("respeito");
+  }
+
+  if(s >= 0.70){
+    return findRes("consciente");
+  }
+
+  return findRes("alerta");
+}
+
+
+function findRes(key){
+
+  for(var i = 0; i < RESULTS.length; i++){
+
+    if(RESULTS[i].key === key){
+      return RESULTS[i];
+    }
+
+  }
+
+  return RESULTS[5];
+}
+
+
+/* =========================================================
+   ELEMENTOS PRINCIPAIS
+   ========================================================= */
+
 var root = document.getElementById("root");
+
 var btnAbout = document.getElementById("btnAbout");
+
 var btnRestartTop = document.getElementById("btnRestartTop");
+
 var timers = [];
-function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
-function el(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
-function esc(t){ return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+
+/* =========================================================
+   LIMPAR TIMERS
+   ========================================================= */
+
+function clearTimers(){
+
+  timers.forEach(function(timer){
+    clearTimeout(timer);
+  });
+
+  timers = [];
+}
+
+
+/* =========================================================
+   CRIAR ELEMENTO
+   ========================================================= */
+
+function el(tag, cls, html){
+
+  var element = document.createElement(tag);
+
+  if(cls){
+    element.className = cls;
+  }
+
+  if(html != null){
+    element.innerHTML = html;
+  }
+
+  return element;
+}
+
+
+/* =========================================================
+   ESCAPAR HTML
+   ========================================================= */
+
+function esc(text){
+
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+
+/* =========================================================
+   TELA INICIAL
+   ========================================================= */
 
 function renderHome(){
+
   clearTimers();
+
   btnRestartTop.classList.add("hidden");
+
   root.innerHTML = "";
+
   var card = el("div","card center");
+
   card.innerHTML =
-    '<span class="tag">Experiência educativa · 6 capítulos · ~8 minutos</span>'+
-    '<h1>RELACIONAMENTO<span class="exe">.EXE</span></h1>'+
-    '<p class="lead"><b>Você está no controle.<br>Será que está controlando a pessoa também?</b></p>'+
-    '<p class="muted">Uma história em formato de conversa. A cada cena você escolhe como reagir e vê a consequência daquela escolha. Ao final, uma reflexão sobre o caminho que você seguiu — não uma avaliação sobre você.</p>'+
-    '<div class="row"><button class="btn" id="btnStart" type="button">Iniciar</button>'+
-    '<button class="btn ghost" id="btnAbout2" type="button">Sobre o projeto</button></div>'+
-    '<p class="muted" style="margin-top:22px">Temas: privacidade e controle · ciúme e autonomia · violências invisíveis (psicológica, gaslighting, mansplaining, manterrupting) · cultura digital, machosfera e discurso de ódio · término, coerção e ameaças.</p>';
+    '<span class="tag">Experiência educativa · 6 capítulos · ~8 minutos</span>' +
+
+    '<h1>RELACIONAMENTO<span class="exe">.EXE</span></h1>' +
+
+    '<p class="lead">' +
+      '<b>Você está no controle.<br>' +
+      'Será que está controlando a pessoa também?</b>' +
+    '</p>' +
+
+    '<p class="muted">' +
+      'Uma história em formato de conversa. ' +
+      'A cada cena você escolhe como reagir e vê a consequência daquela escolha. ' +
+      'Ao final, uma reflexão sobre o caminho que você seguiu — não uma avaliação sobre você.' +
+    '</p>' +
+
+    '<div class="row">' +
+
+      '<button class="btn" id="btnStart" type="button">' +
+        'Iniciar' +
+      '</button>' +
+
+      '<button class="btn ghost" id="btnAbout2" type="button">' +
+        'Sobre o projeto' +
+      '</button>' +
+
+    '</div>' +
+
+    '<p class="muted" style="margin-top:22px">' +
+      'Temas: privacidade e controle · ciúme e autonomia · ' +
+      'violências invisíveis (psicológica, gaslighting, mansplaining, manterrupting) · ' +
+      'cultura digital, machosfera e discurso de ódio · término, coerção e ameaças.' +
+    '</p>';
+
   root.appendChild(card);
+
   document.getElementById("btnStart").onclick = startGame;
+
   document.getElementById("btnAbout2").onclick = renderAbout;
+
   window.scrollTo(0,0);
 }
+
+
+/* =========================================================
+   SOBRE O PROJETO
+   ========================================================= */
 
 function renderAbout(){
+
   clearTimers();
+
   root.innerHTML = "";
+
   var card = el("div","card");
+
   card.innerHTML =
-    '<span class="tag">Sobre o projeto</span>'+
-    '<h2 style="margin-top:12px">O que é o RELACIONAMENTO.EXE</h2>'+
-    '<p>É um jogo educativo digital, em formato de conversa de aplicativo de mensagens, criado para o Concurso para Jovens Aprendizes do CIEE — Projeto Se Liga Moçada, Programa Bem Querer Mulher (categoria de fanzines, jogos educativos ou materiais lúdicos).</p>'+
-    '<p>A proposta transforma os temas trabalhados nos encontros formativos em uma experiência interativa baseada em escolhas. O jogador acompanha seis capítulos e decide como reagir; cada decisão é seguida de uma consequência educativa que explica o que está em jogo naquela cena.</p>'+
-    '<h2 style="margin-top:22px">Temas presentes no jogo</h2>'+
-    '<ul>'+
-      '<li>Machismo e misoginia (capítulos 4 e 5).</li>'+
-      '<li>Tipos de violência e ciclo da violência, com referência à Lei Maria da Penha e à Lei do Feminicídio como marcos legais de proteção (capítulos 3, 5 e 6).</li>'+
-      '<li>Violências invisíveis: psicológica, gaslighting, mansplaining e manterrupting (capítulos 3 e 4).</li>'+
-      '<li>Cultura digital e machosfera — discursos de ódio (capítulo 5).</li>'+
-      '<li>Masculinidades: como expectativas sobre "homem de verdade" aparecem em ciúme, posse e piada de grupo (capítulos 1, 2, 5 e 6).</li>'+
-    '</ul>'+
-    '<h2 style="margin-top:22px">O que o jogo não é</h2>'+
-    '<p>O jogo não é teste psicológico, não faz diagnóstico e não classifica pessoas. Os indicadores (Respeito, Controle e Consciência) medem apenas as escolhas feitas dentro da narrativa ficcional e servem para gerar uma reflexão final.</p>'+
-    '<h2 style="margin-top:22px">Personagens</h2>'+
-    '<p>Lia, Rafa, Bea e Téo são personagens fictícios. Nenhuma pessoa real é retratada e nenhum caso real é reproduzido.</p>'+
-    '<h2 style="margin-top:22px">Onde buscar ajuda</h2>'+
-    '<p class="muted">Ligue 180 — Central de Atendimento à Mulher. Em emergência, 190. Estes canais são informação pública de apoio e não fazem parte da pontuação do jogo.</p>'+
-    '<div class="row"><button class="btn" id="btnBackHome" type="button">Voltar</button></div>';
+
+    '<span class="tag">Sobre o projeto</span>' +
+
+    '<h2 style="margin-top:12px">' +
+      'O que é o RELACIONAMENTO.EXE' +
+    '</h2>' +
+
+    '<p>' +
+      'É um jogo educativo digital, em formato de conversa de aplicativo de mensagens, ' +
+      'criado para o Concurso para Jovens Aprendizes do CIEE — Projeto Se Liga Moçada, ' +
+      'Programa Bem Querer Mulher.' +
+    '</p>' +
+
+    '<p>' +
+      'A proposta transforma os temas trabalhados nos encontros formativos em uma experiência ' +
+      'interativa baseada em escolhas. O jogador acompanha seis capítulos e decide como reagir; ' +
+      'cada decisão é seguida de uma consequência educativa que explica o que está em jogo naquela cena.' +
+    '</p>' +
+
+    '<h2 style="margin-top:22px">Temas presentes no jogo</h2>' +
+
+    '<ul>' +
+
+      '<li>Machismo e misoginia (capítulos 4 e 5).</li>' +
+
+      '<li>Tipos de violência e ciclo da violência, com referência à Lei Maria da Penha e à Lei do Feminicídio como marcos legais de proteção.</li>' +
+
+      '<li>Violências invisíveis: psicológica, gaslighting, mansplaining e manterrupting.</li>' +
+
+      '<li>Cultura digital e machosfera — discursos de ódio.</li>' +
+
+      '<li>Masculinidades: como expectativas sobre "homem de verdade" aparecem em ciúme, posse e piada de grupo.</li>' +
+
+    '</ul>' +
+
+    '<h2 style="margin-top:22px">O que o jogo não é</h2>' +
+
+    '<p>' +
+      'O jogo não é teste psicológico, não faz diagnóstico e não classifica pessoas. ' +
+      'Os indicadores (Respeito, Controle e Consciência) medem apenas as escolhas feitas dentro da narrativa ficcional ' +
+      'e servem para gerar uma reflexão final.' +
+    '</p>' +
+
+    '<h2 style="margin-top:22px">Personagens</h2>' +
+
+    '<p>' +
+      'Lia, Rafa, Bea e Téo são personagens fictícios. ' +
+      'Nenhuma pessoa real é retratada e nenhum caso real é reproduzido.' +
+    '</p>' +
+
+    '<h2 style="margin-top:22px">Onde buscar ajuda</h2>' +
+
+    '<p class="muted">' +
+      'Ligue 180 — Central de Atendimento à Mulher. ' +
+      'Em emergência, 190. ' +
+      'Estes canais são informação pública de apoio e não fazem parte da pontuação do jogo.' +
+    '</p>' +
+
+    '<div class="row">' +
+
+      '<button class="btn" id="btnBackHome" type="button">' +
+        'Voltar' +
+      '</button>' +
+
+    '</div>';
+
   root.appendChild(card);
+
   document.getElementById("btnBackHome").onclick = renderHome;
+
   window.scrollTo(0,0);
 }
 
+
+/* =========================================================
+   INICIAR JOGO
+   ========================================================= */
+
 function startGame(){
-  state = {chapter:0, step:0, R:0, C:0, S:0, choices:0};
+
+  state = {
+    chapter:0,
+    step:0,
+    R:0,
+    C:0,
+    S:0,
+    choices:0
+  };
+
   renderChapter();
 }
 
+
+/* =========================================================
+   HUD
+   ========================================================= */
+
 function hudHtml(){
-  var r = Math.round(pct(state.R,MAXES.minR,MAXES.maxR)*100);
-  var c = Math.round(pct(state.C,0,MAXES.maxC)*100);
-  var s = Math.round(pct(state.S,0,MAXES.maxS)*100);
-  return '<div class="hud">'+
-    meter("❤️ Respeito","f-resp",r)+
-    meter("🔒 Controle","f-ctrl",c)+
-    meter("🧠 Consciência","f-cons",s)+
-  '</div>';
-}
-function meter(label,cls,v){
-  return '<div class="meter"><div class="lbl"><span>'+label+'</span><span>'+v+'%</span></div>'+
-         '<div class="track"><div class="fill '+cls+'" style="width:'+v+'%"></div></div></div>';
+
+  var r = Math.round(
+    pct(
+      state.R,
+      MAXES.minR,
+      MAXES.maxR
+    ) * 100
+  );
+
+  var c = Math.round(
+    pct(
+      state.C,
+      0,
+      MAXES.maxC
+    ) * 100
+  );
+
+  var s = Math.round(
+    pct(
+      state.S,
+      0,
+      MAXES.maxS
+    ) * 100
+  );
+
+  return (
+
+    '<div class="hud">' +
+
+      meter("❤️ Respeito","f-resp",r) +
+
+      meter("🔒 Controle","f-ctrl",c) +
+
+      meter("🧠 Consciência","f-cons",s) +
+
+    '</div>'
+
+  );
 }
 
+
+function meter(label, cls, value){
+
+  return (
+
+    '<div class="meter">' +
+
+      '<div class="lbl">' +
+
+        '<span>' +
+          label +
+        '</span>' +
+
+        '<span>' +
+          value +
+          '%' +
+        '</span>' +
+
+      '</div>' +
+
+      '<div class="track">' +
+
+        '<div class="fill ' +
+          cls +
+          '" style="width:' +
+          value +
+          '%">' +
+        '</div>' +
+
+      '</div>' +
+
+    '</div>'
+
+  );
+}
+
+
+/* =========================================================
+   RENDERIZAR CAPÍTULO
+   ========================================================= */
+
 function renderChapter(){
+
   clearTimers();
+
   btnRestartTop.classList.remove("hidden");
-  var ch = CHAPTERS[state.chapter];
+
+  var chapter = CHAPTERS[state.chapter];
+
   root.innerHTML = "";
+
   var card = el("div","card");
+
   card.innerHTML =
-    '<div class="chaptertag"><span>Capítulo '+ch.id+' de '+CHAPTERS.length+' — '+esc(ch.title)+'</span><span>'+esc(ch.theme)+'</span></div>'+
-    '<div class="progress"><i style="width:'+Math.round((state.chapter/CHAPTERS.length)*100)+'%"></i></div>'+
-    hudHtml()+
-    '<div class="chat" id="chat"></div>'+
+
+    '<div class="chaptertag">' +
+
+      '<span>' +
+        'Capítulo ' +
+        chapter.id +
+        ' de ' +
+        CHAPTERS.length +
+        ' — ' +
+        esc(chapter.title) +
+      '</span>' +
+
+      '<span>' +
+        esc(chapter.theme) +
+      '</span>' +
+
+    '</div>' +
+
+    '<div class="progress">' +
+      '<i style="width:' +
+      Math.round(
+        (state.chapter / CHAPTERS.length) * 100
+      ) +
+      '%"></i>' +
+    '</div>' +
+
+    hudHtml() +
+
+    '<div class="chat" id="chat"></div>' +
+
     '<div id="interaction"></div>';
+
   root.appendChild(card);
+
   state.step = 0;
+
   playSteps();
+
   window.scrollTo(0,0);
 }
 
+
+/* =========================================================
+   REPRODUZIR PASSOS
+   ========================================================= */
+
 function playSteps(){
-  var ch = CHAPTERS[state.chapter];
+
+  var chapter = CHAPTERS[state.chapter];
+
   var chat = document.getElementById("chat");
-  var st = ch.steps[state.step];
-  if(!st){ nextChapter(); return; }
 
-  if(st.t === "choice"){ renderChoice(st); return; }
+  var step = chapter.steps[state.step];
 
-  function push(){
-    var e;
-    if(st.t==="narr") e = el("div","msg narr", esc(st.x));
-    else if(st.t==="me") e = el("div","msg me", '<span class="who">Você</span>'+esc(st.x));
-    else e = el("div","msg them", '<span class="who">'+esc(st.who)+'</span>'+esc(st.x));
-    chat.appendChild(e);
-    state.step++;
-    timers.push(setTimeout(playSteps, st.t==="narr"?280:520));
+  if(!step){
+
+    nextChapter();
+
+    return;
   }
 
-  if(st.t==="them"){
-    var typing = el("div","typing",'<i></i><i></i><i></i>');
+
+  if(step.t === "choice"){
+
+    renderChoice(step);
+
+    return;
+  }
+
+
+  function pushMessage(){
+
+    var message;
+
+
+    if(step.t === "narr"){
+
+      message = el(
+        "div",
+        "msg narr",
+        esc(step.x)
+      );
+
+    }
+
+    else if(step.t === "me"){
+
+      message = el(
+        "div",
+        "msg me",
+        '<span class="who">Você</span>' +
+        esc(step.x)
+      );
+
+    }
+
+    else{
+
+      message = el(
+        "div",
+        "msg them",
+        '<span class="who">' +
+        esc(step.who) +
+        '</span>' +
+        esc(step.x)
+      );
+
+    }
+
+
+    chat.appendChild(message);
+
+    state.step++;
+
+    timers.push(
+      setTimeout(
+        playSteps,
+        step.t === "narr" ? 280 : 520
+      )
+    );
+  }
+
+
+  if(step.t === "them"){
+
+    var typing = el(
+      "div",
+      "typing",
+      "<i></i><i></i><i></i>"
+    );
+
     chat.appendChild(typing);
-    timers.push(setTimeout(function(){ typing.remove(); push(); }, 620));
-  } else {
-    push();
+
+    timers.push(
+      setTimeout(
+        function(){
+
+          typing.remove();
+
+          pushMessage();
+
+        },
+        620
+      )
+    );
+
+  }
+
+  else{
+
+    pushMessage();
+
   }
 }
 
-function renderChoice(st){
+
+/* =========================================================
+   RENDERIZAR ESCOLHAS
+   ========================================================= */
+
+function renderChoice(step){
+
   var box = document.getElementById("interaction");
-  box.innerHTML = '<div class="question">'+esc(st.q)+'</div><div class="options" id="opts"></div>';
+
+  box.innerHTML =
+
+    '<div class="question">' +
+      esc(step.q) +
+    '</div>' +
+
+    '<div class="options" id="opts"></div>';
+
+
   var opts = document.getElementById("opts");
-  st.opts.forEach(function(o, i){
-    var b = el("button","opt", esc(String.fromCharCode(65+i))+") "+esc(o.x));
-    b.type="button";
-    b.onclick = function(){ pickOption(st,o); };
-    opts.appendChild(b);
+
+
+  step.opts.forEach(function(option, index){
+
+    var button = el(
+      "button",
+      "opt",
+      esc(
+        String.fromCharCode(65 + index)
+      ) +
+      ") " +
+      esc(option.x)
+    );
+
+    button.type = "button";
+
+    button.onclick = function(){
+
+      pickOption(step, option);
+
+    };
+
+    opts.appendChild(button);
+
   });
 }
 
-function pickOption(st,o){
-  var buttons = document.querySelectorAll("#opts .opt");
-  for(var i=0;i<buttons.length;i++) buttons[i].disabled = true;
 
-  state.R += o.r; state.C += o.c; state.S += o.s; state.choices++;
+/* =========================================================
+   ESCOLHER OPÇÃO
+   ========================================================= */
+
+function pickOption(step, option){
+
+  var buttons = document.querySelectorAll(
+    "#opts .opt"
+  );
+
+  for(var i = 0; i < buttons.length; i++){
+
+    buttons[i].disabled = true;
+
+  }
+
+
+  state.R += option.r;
+
+  state.C += option.c;
+
+  state.S += option.s;
+
+  state.choices++;
+
 
   var chat = document.getElementById("chat");
-  chat.appendChild(el("div","msg me",'<span class="who">Você</span>'+esc(o.x)));
+
+
+  /*
+    IMPORTANTE:
+
+    Opções marcadas com silent:true
+    não aparecem como mensagem do jogador.
+  */
+
+  if(!option.silent){
+
+    chat.appendChild(
+      el(
+        "div",
+        "msg me",
+        '<span class="who">Você</span>' +
+        esc(option.x)
+      )
+    );
+
+  }
+
 
   var box = document.getElementById("interaction");
-  var fb = el("div","feedback",'<b>Consequência</b><br>'+esc(o.f)+
-    '<div class="delta">'+chip("❤️ Respeito",o.r)+chip("🔒 Controle",o.c)+chip("🧠 Consciência",o.s)+'</div>');
-  box.appendChild(fb);
 
-  var row = el("div","row");
-  var b = el("button","btn", state.step+1 >= CHAPTERS[state.chapter].steps.length
-      ? (state.chapter+1 >= CHAPTERS.length ? "Ver resultado" : "Próximo capítulo")
-      : "Continuar");
-  b.type = "button";
-  b.onclick = function(){
+
+  var feedback = el(
+    "div",
+    "feedback",
+    '<b>Consequência</b><br>' +
+    esc(option.f) +
+
+    '<div class="delta">' +
+
+      chip("❤️ Respeito", option.r) +
+
+      chip("🔒 Controle", option.c) +
+
+      chip("🧠 Consciência", option.s) +
+
+    '</div>'
+  );
+
+
+  box.appendChild(feedback);
+
+
+  var row = el(
+    "div",
+    "row"
+  );
+
+
+  var buttonText;
+
+
+  if(
+    state.step + 1 >=
+    CHAPTERS[state.chapter].steps.length
+  ){
+
+    if(
+      state.chapter + 1 >=
+      CHAPTERS.length
+    ){
+
+      buttonText = "Ver resultado";
+
+    }
+
+    else{
+
+      buttonText = "Próximo capítulo";
+
+    }
+
+  }
+
+  else{
+
+    buttonText = "Continuar";
+
+  }
+
+
+  var button = el(
+    "button",
+    "btn",
+    buttonText
+  );
+
+
+  button.type = "button";
+
+
+  button.onclick = function(){
+
     state.step++;
-    if(state.step >= CHAPTERS[state.chapter].steps.length){ nextChapter(); return; }
+
+
+    if(
+      state.step >=
+      CHAPTERS[state.chapter].steps.length
+    ){
+
+      nextChapter();
+
+      return;
+    }
+
+
     box.innerHTML = "";
+
     updateHud();
+
     playSteps();
+
   };
-  row.appendChild(b);
+
+
+  row.appendChild(button);
+
   box.appendChild(row);
+
   updateHud();
-  fb.scrollIntoView({behavior:"smooth", block:"nearest"});
+
+
+  feedback.scrollIntoView({
+    behavior:"smooth",
+    block:"nearest"
+  });
 }
 
-function chip(label,v){
-  var sign = v>0 ? "+"+v : String(v);
-  return '<span>'+label+' '+sign+'</span>';
+
+/* =========================================================
+   CHIP DE PONTUAÇÃO
+   ========================================================= */
+
+function chip(label, value){
+
+  var sign;
+
+  if(value > 0){
+
+    sign = "+" + value;
+
+  }
+
+  else{
+
+    sign = String(value);
+
+  }
+
+  return (
+    '<span>' +
+      label +
+      ' ' +
+      sign +
+    '</span>'
+  );
 }
+
+
+/* =========================================================
+   ATUALIZAR HUD
+   ========================================================= */
 
 function updateHud(){
-  var vals = [pct(state.R,MAXES.minR,MAXES.maxR), pct(state.C,0,MAXES.maxC), pct(state.S,0,MAXES.maxS)];
+
+  var values = [
+
+    pct(
+      state.R,
+      MAXES.minR,
+      MAXES.maxR
+    ),
+
+    pct(
+      state.C,
+      0,
+      MAXES.maxC
+    ),
+
+    pct(
+      state.S,
+      0,
+      MAXES.maxS
+    )
+
+  ];
+
+
   var fills = document.querySelectorAll(".fill");
-  var labels = document.querySelectorAll(".meter .lbl span:last-child");
-  for(var i=0;i<fills.length && i<3;i++){
-    var p = Math.round(vals[i]*100);
-    fills[i].style.width = p+"%";
-    if(labels[i]) labels[i].textContent = p+"%";
+
+  var labels = document.querySelectorAll(
+    ".meter .lbl span:last-child"
+  );
+
+
+  for(
+    var i = 0;
+    i < fills.length && i < 3;
+    i++
+  ){
+
+    var percentage = Math.round(
+      values[i] * 100
+    );
+
+    fills[i].style.width =
+      percentage + "%";
+
+
+    if(labels[i]){
+
+      labels[i].textContent =
+        percentage + "%";
+
+    }
+
   }
 }
 
+
+/* =========================================================
+   PRÓXIMO CAPÍTULO
+   ========================================================= */
+
 function nextChapter(){
+
   state.chapter++;
+
   state.step = 0;
-  if(state.chapter >= CHAPTERS.length){ renderResult(); return; }
+
+
+  if(
+    state.chapter >=
+    CHAPTERS.length
+  ){
+
+    renderResult();
+
+    return;
+  }
+
+
   renderChapter();
 }
 
+
+/* =========================================================
+   RESULTADO FINAL
+   ========================================================= */
+
 function renderResult(){
+
   clearTimers();
-  var res = computeResult();
-  var r = Math.round(pct(state.R,MAXES.minR,MAXES.maxR)*100);
-  var c = Math.round(pct(state.C,0,MAXES.maxC)*100);
-  var s = Math.round(pct(state.S,0,MAXES.maxS)*100);
+
+  var result = computeResult();
+
+
+  var r = Math.round(
+    pct(
+      state.R,
+      MAXES.minR,
+      MAXES.maxR
+    ) * 100
+  );
+
+
+  var c = Math.round(
+    pct(
+      state.C,
+      0,
+      MAXES.maxC
+    ) * 100
+  );
+
+
+  var s = Math.round(
+    pct(
+      state.S,
+      0,
+      MAXES.maxS
+    ) * 100
+  );
+
+
   root.innerHTML = "";
-  var card = el("div","card");
+
+
+  var card = el(
+    "div",
+    "card"
+  );
+
+
   card.innerHTML =
-    '<div class="progress"><i style="width:100%"></i></div>'+
-    '<div class="center"><div class="result-icon">'+res.icon+'</div>'+
-    '<div class="result-title" style="color:'+res.color+'">'+esc(res.title)+'</div></div>'+
-    '<p>'+esc(res.text).replace(/\n/g,"<br>")+'</p>'+
-    '<div class="stats">'+
-      '<div class="stat">❤️ Respeito<strong>'+r+'%</strong></div>'+
-      '<div class="stat">🔒 Controle<strong>'+c+'%</strong></div>'+
-      '<div class="stat">🧠 Consciência<strong>'+s+'%</strong></div>'+
-    '</div>'+
-    '<p class="muted">Você tomou '+state.choices+' decisões nos 6 capítulos. Este resultado descreve as escolhas feitas dentro de uma história ficcional. Ele não avalia, não classifica e não diagnostica ninguém: serve para abrir conversa sobre respeito, autonomia e limites.</p>'+
-    '<p class="muted">Precisa de ajuda ou conhece alguém que precise? Ligue 180 — Central de Atendimento à Mulher. Em emergência, 190.</p>'+
-    '<div class="row">'+
-      '<button class="btn" id="btnAgain" type="button">Jogar novamente</button>'+
-      '<button class="btn ghost" id="btnAbout3" type="button">Sobre o projeto</button>'+
-      '<button class="btn ghost" id="btnHome" type="button">Tela inicial</button>'+
+
+    '<div class="progress">' +
+      '<i style="width:100%"></i>' +
+    '</div>' +
+
+    '<div class="center">' +
+
+      '<div class="result-icon">' +
+        result.icon +
+      '</div>' +
+
+      '<div class="result-title" style="color:' +
+        result.color +
+      '">' +
+
+        esc(result.title) +
+
+      '</div>' +
+
+    '</div>' +
+
+    '<p>' +
+      esc(result.text)
+        .replace(/\n/g,"<br>") +
+    '</p>' +
+
+    '<div class="stats">' +
+
+      '<div class="stat">' +
+        '❤️ Respeito' +
+        '<strong>' +
+          r +
+          '%' +
+        '</strong>' +
+      '</div>' +
+
+      '<div class="stat">' +
+        '🔒 Controle' +
+        '<strong>' +
+          c +
+          '%' +
+        '</strong>' +
+      '</div>' +
+
+      '<div class="stat">' +
+        '🧠 Consciência' +
+        '<strong>' +
+          s +
+          '%' +
+        '</strong>' +
+      '</div>' +
+
+    '</div>' +
+
+    '<p class="muted">' +
+      'Você tomou ' +
+      state.choices +
+      ' decisões nos 6 capítulos. ' +
+      'Este resultado descreve as escolhas feitas dentro de uma história ficcional. ' +
+      'Ele não avalia, não classifica e não diagnostica ninguém: serve para abrir conversa sobre respeito, autonomia e limites.' +
+    '</p>' +
+
+    '<p class="muted">' +
+      'Precisa de ajuda ou conhece alguém que precise? ' +
+      'Ligue 180 — Central de Atendimento à Mulher. ' +
+      'Em emergência, 190.' +
+    '</p>' +
+
+    '<div class="row">' +
+
+      '<button class="btn" id="btnAgain" type="button">' +
+        'Jogar novamente' +
+      '</button>' +
+
+      '<button class="btn ghost" id="btnAbout3" type="button">' +
+        'Sobre o projeto' +
+      '</button>' +
+
+      '<button class="btn ghost" id="btnHome" type="button">' +
+        'Tela inicial' +
+      '</button>' +
+
     '</div>';
+
+
   root.appendChild(card);
-  document.getElementById("btnAgain").onclick = startGame;
-  document.getElementById("btnAbout3").onclick = renderAbout;
-  document.getElementById("btnHome").onclick = renderHome;
+
+
+  document.getElementById("btnAgain").onclick =
+    startGame;
+
+
+  document.getElementById("btnAbout3").onclick =
+    renderAbout;
+
+
+  document.getElementById("btnHome").onclick =
+    renderHome;
+
+
   window.scrollTo(0,0);
 }
 
+
+/* =========================================================
+   BOTÕES DO TOPO
+   ========================================================= */
+
 btnAbout.onclick = renderAbout;
+
 btnRestartTop.onclick = renderHome;
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
+
 renderHome();
+
 </script>
+
 </body>
 </html>
